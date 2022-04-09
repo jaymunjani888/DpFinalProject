@@ -6,14 +6,17 @@ db = client.get_database('Test1')
 records = db.Test1
 
 
-while True:
-# replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
-    r = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=JM3G4VEGRLIU5WLY',verify=False)
-    
-    if r.status_code ==200:
-        data = r.json()
-        print(data)
-        #records.insert_one(data)
-        time.sleep(600000)
+#while True:
+    # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
+    #r = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=1440min&apikey=JM3G4VEGRLIU5WLY',verify=False)
+r = requests.get('https://api.weatherapi.com/v1/forecast.json?key=3185d7975ee149ed9e9200725220804&q=London&days=7&aqi=yes&alerts=no')
+if r.status_code ==200:
+    data = r.json()
+    print(data)
+    records.insert_one(data)
+        #time.sleep(600000)
+
+'''        
 else:
     exit()
+'''
