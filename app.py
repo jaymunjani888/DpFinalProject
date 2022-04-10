@@ -44,7 +44,7 @@ def fetchdataforPieChart():
     current = (x.get("current"))
     day = current.get("last_updated")
     # datetime_obj = datetime.strptime(abc, '%y/%m/%d')
-    if (day[0:10]) != (today):
+    if (day[0:10]) == (today):
         air_quality = (current.get("air_quality"))
         air_quality.pop('us-epa-index')
         air_quality.pop('gb-defra-index')
@@ -64,7 +64,7 @@ def fetchdataforBarChart():
     day = current.get("last_updated")
     # datetime_obj = datetime.strptime(abc, '%y/%m/%d')
     forecastday = (x.get("forecast")).get('forecastday')
-    if (day[0:10]) != (today):
+    if (day[0:10]) == (today):
         for i in forecastday:
             # print (i.get('date'))
             # print (((i.get('day')).get('avghumidity')))
