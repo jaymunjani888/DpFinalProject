@@ -76,8 +76,7 @@ def fetchdataforBarChart():
 today = str(datetime.date.today())
 
 def fetchdataLineChart():
-    client = pymongo.MongoClient(
-        "mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    client = pymongo.MongoClient("mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
     # Database Name
     db = client["Test1"]
