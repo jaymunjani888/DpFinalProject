@@ -52,7 +52,12 @@ def fetchdataforPieChart():
         return data
 
 def fetchdataforBarChart():
-    client = pymongo.MongoClient("mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
+
+
+
+    client = pymongo.MongoClient("mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/Test1?retryWrites=true&w=majority")
     # Database Name
     db = client["Test1"]
     # Collection Name
