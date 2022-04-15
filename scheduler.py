@@ -13,8 +13,10 @@ r = requests.get('https://api.weatherapi.com/v1/forecast.json?key=3185d7975ee149
 if r.status_code ==200:
     data = r.json()
     print(data)
+    records.delete()
     records.insert_one(data)
         #time.sleep(600000)
+    
 
 '''        
 else:

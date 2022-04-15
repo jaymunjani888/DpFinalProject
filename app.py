@@ -44,37 +44,35 @@ def fetchdataforPieChart():
     current = (x.get("current"))
     day = current.get("last_updated")
     # datetime_obj = datetime.strptime(abc, '%y/%m/%d')
-    if (day[0:10]) == (today):
-        air_quality = (current.get("air_quality"))
-        air_quality.pop('us-epa-index')
-        air_quality.pop('gb-defra-index')
-        data.update(air_quality)
-        return data
+    #if (day[0:10]) == (today):
+    air_quality = (current.get("air_quality"))
+    air_quality.pop('us-epa-index')
+    air_quality.pop('gb-defra-index')
+    data.update(air_quality)
+    return data
 
 def fetchdataforBarChart():
 
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
-
-
-
+    
     client = pymongo.MongoClient("mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/Test1?retryWrites=true&w=majority")
     # Database Name
     db = client["Test1"]
     # Collection Name
     col = db["Test1"]
     data = {'Date':'Avg Humidity'}
+    
     x = col.find_one()
     # print(type(x))
     current = (x.get("current"))
     day = current.get("last_updated")
     # datetime_obj = datetime.strptime(abc, '%y/%m/%d')
     forecastday = (x.get("forecast")).get('forecastday')
-    if (day[0:10]) == (today):
-        for i in forecastday:
-            # print (i.get('date'))
-            # print (((i.get('day')).get('avghumidity')))
-            data[i.get('date')] = (i.get('day')).get('avghumidity')
-        return data
+    #if (day[0:10]) == (today):
+    for i in forecastday:
+        # print (i.get('date'))
+        # print (((i.get('day')).get('avghumidity')))
+        data[i.get('date')] = (i.get('day')).get('avghumidity')
+    return data
 
 
 # lastupdated = datetime.datetime(2022, 4, 7)
