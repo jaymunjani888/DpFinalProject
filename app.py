@@ -2,11 +2,36 @@
 from flask import Flask, request, jsonify,render_template
 import pymongo
 import datetime
+import apscheduler
+
 
 app = Flask(__name__)
 #data = {}
 today = str(datetime.date.today())
 data2 = {'time': 'Temperature degree celcius'}
+
+sch = BlockingScheduler()
+
+@sch.scheduled_job('interval', minutes =1440)
+def DataScheduler():
+    import requests, time
+    import pymongo
+
+    client = pymongo.MongoClient("mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    db = client.get_database('Test1')
+    records = db.Test1
+    r = requests.get('https://api.weatherapi.com/v1/forecast.json?key=3185d7975ee149ed9e9200725220804&q=London&days=7&aqi=yes&alerts=no')
+    if r.status_code ==200:
+        data = r.json()
+        print(data)
+        records.delete()
+        records.insert_one(data)
+            
+    else:
+        exit()
+
+
+
 
 @app.route('/')
 def index():
