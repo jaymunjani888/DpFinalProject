@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify,render_template
 import pymongo
 import datetime
 
+
 app = Flask(__name__)
 #data = {}
 today = str(datetime.date.today())

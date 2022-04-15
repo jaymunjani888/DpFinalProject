@@ -18,7 +18,6 @@ if r.status_code ==200:
         #time.sleep(600000)
     
 
-'''        
+        
 else:
     exit()
-'''
