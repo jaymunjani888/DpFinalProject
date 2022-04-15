@@ -33,7 +33,9 @@ def google_line_chart():
     return render_template('line-chart.html',data=data2)
 
 def fetchdataforPieChart():
-    client = pymongo.MongoClient("mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    
+    url = "mongodb+srv://Ruchit:1234@cluster0.8uyay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    client = pymongo.MongoClient(url)
     # Database Name
     db = client["Test1"]
     # Collection Name
